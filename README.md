@@ -37,6 +37,7 @@ Talk about structs, which are expanded as part of a definition
 
 ```bash
 cue eval ./...
+cue export --out yaml
 ```
 
 Show error catching--if I replace replica count with a string, it will get rejected!
