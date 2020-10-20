@@ -1,0 +1,5 @@
+#!/bin/bash
+
+cat <&0 > kustomize/base/all.yaml
+
+kustomize build kustomize/overlays/${DEPLOY_ENV} && rm -rf kustomize/base/all.yaml
