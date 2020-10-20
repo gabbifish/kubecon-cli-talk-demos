@@ -1,45 +1,59 @@
-# Helm (Demo 1): basic abstraction and cross-cutting functionality
+# Demo code for Kubecon 2020 talk
+
+## Helm (Demo 1): basic abstraction and cross-cutting functionality
+
 Let's deploy something a lot of people have on their clusters: kube-state-metrics exposed via prometheus!
 Pulled from prometheus project's helm chart repository on github.'
+
+```bash
 cat Chart.yaml
 cat requirements.yaml
 helm install kube-metrics prometheus-kube-state-metrics
 kubectl get deployments
+```
 
-# Kustomize (Demo 2):
+## Kustomize (Demo 2):
+
 Some fields can be changed in the values.yaml file. but in cases where you need variance, you don't want to fork the values file and have multiple versions of it! We can control variance using kustomize. In cases where a given value cannot be customized via the values.yaml file, you'll also have to use kustomize to customize your helm chart!
 
 Let's say we want to make the retention period for our prometheus metrics variable depending on whether we're deploying to a staging vs production cluster. After all, we don't need to retain staging metrics for that long, while we might want to keep production metrics around for longer.
 
-kubectl get deployments
-get prom server, grep over "retention" to show retention value
-show kustomize and patch files 
-then show kustomize script
+1. ```kubectl get deployments```
+1. get prom server, grep over "retention" to show retention value
+1. show kustomize and patch files in kustomize/overlays directory
+1. then show kustomize script
 
+```bash
 DEPLOY_ENV=staging helm install kube-metrics prometheus-kube-state-metrics --post-renderer kustomize/kustomize
 kubectl get deployment kube-metrics-prometheus-server -o yaml | grep tsdb
+```
 
-# Cuelang (Demo 3):
+## Cuelang (Demo 3):
+
 Walk through kube.cue, explain parts of it
 
 Talk about definition, where expected types for values are defined
 Talk about structs, which are expanded as part of a definition
 
+```bash
 cue eval ./...
+```
 
 Show error catching--if I replace replica count with a string, it will get rejected!
 
-# Pulumi (Demo 4)
+## Pulumi (Demo 4):
 
 This is simple... just go over example code and verbally state pulumi command
 Explain it works like an installer
 Can generate YAML from it but this isn't supported from Go at the moment.
 
-# KPT (Demo 5)
+## KPT (Demo 5):
+
 **TODO**
 
 
-# Example deployment used throughout demos:
+## Example deployment used throughout demos:
+
 ```yaml
 apiVersion: apps/v1
 kind: Deployment
