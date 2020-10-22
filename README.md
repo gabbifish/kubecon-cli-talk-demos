@@ -3,11 +3,14 @@
 ## Helm (Demo 1): basic abstraction and cross-cutting functionality
 
 Let's deploy something a lot of people have on their clusters: kube-state-metrics exposed via prometheus!
-Pulled from prometheus project's helm chart repository on github.'
+This repo is pulled from prometheus project's helm chart repository on github.
 
 ```bash
 cat Chart.yaml
+# First, we look at the chart.yaml file that describes the application we are deploying through helm.
+# You'll notice that it contains metadata about the application we're deploying.
 cat requirements.yaml
+# We also should note the requirements.yaml contains kube-state-metrics, which is pulled in as a 
 helm install kube-metrics prometheus-kube-state-metrics
 kubectl get deployments
 ```
@@ -72,6 +75,7 @@ Customize by uncommenting the args in the deploy.yaml and run again
 kpt fn run ./ --dry-run --enable-star
 ```
 
+You can see that this stands in contrast to kustomize, where a small deployment yaml with custom values was patched onto a large preexisitng deployment file instead.
 
 ## Example deployment used throughout demos:
 
