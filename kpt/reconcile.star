@@ -69,10 +69,6 @@ def reconcile(items):
    }
 }
 
-  if server == None:
-    items.append(d)
-    return
-
   items.remove(resource)
   if server.get("spec") != None and len(server["spec"]["template"]["spec"]["containers"]) == 1:
     d["spec"]["template"]["spec"]["containers"][0]["args"][0] = server["spec"]["template"]["spec"]["containers"][0]["args"][0]

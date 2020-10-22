@@ -42,8 +42,6 @@ deployment: staging: {
 	}
 }
 
-_#retention: "13"
-
 deployment: [ID=_]: {
 	apiVersion: "apps/v1"
 	kind:       "Deployment"
@@ -53,7 +51,7 @@ deployment: [ID=_]: {
 		replicas: int
 		template: {
 			metadata: labels: {
-				app:       ID
+				app:       "prometheus"
 				component: string
 			}
 			// we always have one namesake container

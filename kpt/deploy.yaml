@@ -4,11 +4,11 @@ metadata:
   annotations:
     "config.kubernetes.io/function": 'starlark: {path: reconcile.star, name: prometheus}'
     "example.com/prometheus": "kube-metrics-prometheus-server"
-# spec:
-#   template:
-#     spec:
-#       containers:
-#       - name: prometheus
-#         args:
-#         - "--storage.tsdb.retention.time=7d"
+spec:
+  template:
+    spec:
+      containers:
+      - name: prometheus
+        args:
+        - "--storage.tsdb.retention.time=7d"
 

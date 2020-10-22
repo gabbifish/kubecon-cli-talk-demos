@@ -31,6 +31,7 @@ kubectl get deployment kube-metrics-prometheus-server -o yaml | grep tsdb
 ## Cuelang (Demo 3):
 
 Walk through kube.cue, explain parts of it
+- DSLs offer a specialized syntax for expressing configuration, and can enforce constraints like types.
 
 Talk about definition, where expected types for values are defined
 Talk about structs, which are expanded as part of a definition
@@ -50,7 +51,26 @@ Can generate YAML from it but this isn't supported from Go at the moment.
 
 ## KPT (Demo 5):
 
-**TODO**
+What this is demoing is that the controller in this case is implemented as a starlark script. it looks for deployments annotated with kube.apple.com prometheus and then applies the given specfications/fields in the starlark script to that object
+
+you have the same layering and composition available from the kubernetes API. it's a reconciliation 
+
+# Kpt
+
+Generate the prometheus Deployment
+
+Instead of patching a high-level resource with low-level settings, kpt takes an opposite approach.
+It takes a a low-level resource, and populates and promotes it into a prometheus deployment.
+
+```sh
+kpt fn run ./ --dry-run --enable-star
+```
+
+Customize by uncommenting the args in the deploy.yaml and run again
+
+```sh
+kpt fn run ./ --dry-run --enable-star
+```
 
 
 ## Example deployment used throughout demos:
