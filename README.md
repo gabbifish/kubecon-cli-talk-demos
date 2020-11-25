@@ -2,6 +2,7 @@
 ## KubeCon2020 Talking points and Slides
 
 `2020_kubecon_slides.pdf`
+[2020_kubecon_slides.pdf](2020_kubecon_slides.pdf)
 
 ## Helm (Demo 1): basic abstraction and cross-cutting functionality
 
